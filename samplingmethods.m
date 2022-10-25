@@ -9,7 +9,7 @@
 while(1)
     clc;clear;
     l=1;
-    reply8 = input("do you want to analyse a wave[1] or draw the charchtarstics of a sampling function[2]? Ans:");
+    reply8 = input("do you want to analyse a wave[1] or draw the charchtarstics of a sampling function[2]? Ans: ");
     if reply8 == 1
         while 1
             if l==1
@@ -33,8 +33,8 @@ while(1)
                 end
             end
             if amp ~ 0;
-                fprintf("\nthe resulting input wave is y=%fsin(%f*pi*t+%f)",amp,(2*freq),phaseangle);
-                reply = input('\nDo you want to restart? Y/N [Y]:','s');
+                fprintf("\nthe resulting input wave is y=%fsin(%f*pi*t+%f) ",amp,(2*freq),phaseangle);
+                reply = input('\nDo you want to restart? Y/N [Y]: ','s');
                 if isempty(reply);
                     reply = 'N';
                 end
@@ -48,21 +48,25 @@ while(1)
                 end
                     l2=1;
                 while 1
-                    reply7 = input('add a another non-fundmental component wave to the equation? Y/N','s');
+                    reply7 = input('add a another non-fundmental component wave to the equation? Y/N Ans: ','s');
                     if isempty(reply7);
                         reply7 = 'N';
                     end
                     if reply7=='Y'
                         l2=l2+1;
                         if l2==2
-                            fprintf('this is the 2nd harmonic component F2=%f',(2*freq)); 
+                            fprintf('this is the 2nd harmonic component F2=%d Hz\n',(2*freq)); 
                         elseif 12==3
-                            fprintf('this is the 3rd harmonic component F3=%f',(3*freq));
+                            fprintf('this is the 3rd harmonic component F3=%d Hz\n',(3*freq));
                         else
-                            fprintf('this is the %dth harmonic component F%d=%f',l2,(l2*freq),l2);
+                            if l2==3
+                            fprintf('this is the 3rd harmonic component F3=%d Hz\n',(3*freq));
+                            else
+                            fprintf('this is the %dth harmonic component F%d=%d Hz\n',l2, l2 ,(l2*freq));
+                            end
                         end
                         amp2   = input('amplitude of the harmonic wave= ');
-                        phase2 = input('phase shift of the wave in degrees phi=');
+                        phase2 = input('phase shift of the wave in degrees phi= ');
                         for i=len+1:1:(len+1+samnumber)
                             k(i)=k(i)+amp2*sin(2*freq*l2*pi*Tsample*(i-len-1)+phase2*pi/180);
                         end
@@ -80,7 +84,7 @@ while(1)
                 end
             if reply2=='Y';
                 DCcomp= input("\nthe dc conmponent max amplitude= ");
-                reply3= input('\nis the DC componnent rising(R), decaying(D), or constant(C)? ans:','s');
+                reply3= input('\nis the DC componnent rising(R), decaying(D), or constant(C)? ans: ','s');
                 if reply3=='R';
                     risetime= input("\nthe rise time is Tr= ");
                     for i=len+1:1:(len+1+samnumber)
@@ -286,6 +290,9 @@ end
 
 %version 1.2 change log
 % added Peak-Based Predictive calculation 
+
+%version 1.21
+% very minor changes to the text propmpts
 
 %feautures yet to be added in future versions
 %1. Mann-Morrison and Prodar 70 (maybe in some future but don't intend to do it now)
