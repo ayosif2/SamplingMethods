@@ -1,4 +1,4 @@
-%Sampling methods V1.10 (still thinking of a proper name)
+%Sampling methods V1.11 (still thinking of a proper name)
 %this application was devolped by Yossef Ahmed Samir Salama for the subject
 %of fault analysis
 %here figure 1 is the main wave, 2,3 the 2 sampling method figure ,4,5 the 3
@@ -48,7 +48,7 @@ while(1)
                 end
                     l2=1;
                 while 1
-                    reply7 = input('add a another non-fundmental component wave to the equation? Y/N');
+                    reply7 = input('add a another non-fundmental component wave to the equation? Y/N','s');
                     if isempty(reply7);
                         reply7 = 'N';
                     end
@@ -160,6 +160,7 @@ while(1)
                 Y3(z)=sqrt(Ys3(z)^2+Yc3(z)^2);
                 angle3(z)=atand(Ys3(z)/Yc3(z));
             end
+            mean(Y)
             figure(4);
             plot(time,Y3,'-bo');
             title('magnitude over time for three sample method')
@@ -193,7 +194,7 @@ while(1)
         end
         for iI=1:10001
             for i=len+1:1:(len+1+samnumber)
-                k(i)=amp*sin(2*basefreq*pi*Tsample*(i-len-1)+phaseangle*pi/180);
+                k(i)=amp*sin(2*iI*basefreq*pi*Tsample*(i-len-1)+phaseangle*pi/180);
             end
             if reply9=='2' || reply9=='1'
                 Yc=k;
@@ -225,15 +226,15 @@ while(1)
                 Ymean3(iI)=mean(Y3);
             end            
         end
-        freqval=(1:1001)*basefreq;
+        freqval=(1:10001)*basefreq;
         if reply9=='3' || reply9=='1'
             figure(6)
-            plot(freqval,Ymean2,'-ko');
+            plot(freqval,Ymean2,'-k');
             title('charactarstics using 2 sample method');
         end
         if reply9=='3' || reply9=='1'
             figure(7)
-            plot(freqval,Ymean3,'-ko');
+            plot(freqval,Ymean3,'-k');
             title('charactarstics using 3 sample method');
         end
         reply6=input('do you want to go again? Y/N ans: ','s');
@@ -256,11 +257,17 @@ end
 %2. added the charctarstics mode to the system
 %B. Bug Fixes
 %1. fixed the starting value proplem in the 2 sample method
-%2. made the system use only the next value in all my methods to avoid
-%errors
+%2. made the system use only the next value in all my methods to avoid errors
+
+
+%version 1.11 change log
+%minor bug fixes
+
 
 %feautures yet to be added in future versions
 %1. Peak-Based Predictive calculation
 %2. Mann-Morrison and Prodar 70 (maybe in some future but don't intend to do it now)
 %3. Matrix input (high propability to be implemented)
 %4. File input (high propability to implement)
+%4. a modular programming based version (feels kinda unnecessary to say the least)
+%5. a GUI version (for efficient work flow the system must be made modular first fell like its gonna be a drag don't if its ever gonna happen)
