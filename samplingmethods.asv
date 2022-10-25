@@ -1,4 +1,4 @@
-%Sampling methods V1.10 (still thinking of a proper name)
+%Sampling methods V1.2 (still thinking of a proper name)
 %this application was devolped by Yossef Ahmed Samir Salama for the subject
 %of fault analysis
 %here figure 1 is the main wave, 2,3 the 2 sampling method figure ,4,5 the 3
@@ -117,7 +117,7 @@ while(1)
             end
         end
         time=(0:length(k)-1)*Tsample;
-        reply5=input('\nwhich sampling method do you want 2 for 2 sample method 3 for 3 sample method and 1 for both: ans: ','s');
+        reply5=input('\nwhich sampling method do you want 2 for 2 sample method ,3 for 3 sample method\n,P for peak-Based predictive calculations and 1 for both: ans: ','s');
         figure(1);
         if reply5~'1';
             if reply5~'2';
@@ -144,6 +144,15 @@ while(1)
             figure(3);
             plot(time,angle,'-ko');
             title('angle over time for two sample method');       
+        end
+        if reply5=='P' || reply5=='1'
+            Yp(1)=(1/(2*pi*freq0))*sqrt((k(1)/Tsample)^2+(2*pi*freq0*k(1))^2);
+            for j=2:length(k)
+                Yp(j)=(1/(2*pi*freq0))*sqrt(((k(j)-k(j-1))/Tsample)^2+(2*pi*freq0*k(j))^2);
+            end
+            figure(8)
+            plot(time,Yp,'-ko')
+            title('magnitude over time for Peak-Based predictive method')
         end
         if reply5=='3' || reply5=='1'
             Yc3(1)=(0*cos(2*freq0*pi*Tsample)+0+k(1)*cos(2*freq0*pi*Tsample))/((2*(cos(2*freq0*pi*Tsample))^2)+1);
@@ -185,7 +194,7 @@ while(1)
         phaseangle=input("\nphase shift of the wave in degrees\nphi= ");
         len=0;
         basefreq= freq0/1000;
-        reply9=input('\nwhich sampling method do you want 2 for 2 sample method 3 for 3 sample method and 1 for both: ans: ','s');
+        reply9=input('\nwhich sampling method do you want 2 for 2 sample method ,3 for 3 sample method,\nP for peak based predictive method and 1 for all;) ans: ','s');
         simtime=input("\nsimulation time in seconds= ");
         time=simtime+0;
         samnumber=simtime/Tsample;
@@ -207,6 +216,13 @@ while(1)
                     angle(z)=atand(Ys(z)/Yc(z));
                 end
                 Ymean2(iI)=mean(Y);
+            end
+            if reply5=='P' || reply5=='1'
+                Yp(1)=(1/(2*pi*freq0))*sqrt((k(1)/Tsample)^2+(2*pi*freq0*k(1))^2);
+                for j=2:length(k)
+                    Yp(j)=(1/(2*pi*freq0))*sqrt(((k(j)-k(j-1))/Tsample)^2+(2*pi*freq0*k(j))^2);
+                end
+                Ypmean=mean(Yp);
             end
             if reply9=='3' || reply9=='1'
                 Yc3(1)=(0*cos(2*freq0*pi*Tsample)+0+k(1)*cos(2*freq0*pi*Tsample))/((2*(cos(2*freq0*pi*Tsample))^2)+1);
@@ -237,6 +253,11 @@ while(1)
             plot(freqval,Ymean3,'-k');
             title('charactarstics using 3 sample method');
         end
+        if reply9=='P' || reply9=='1'
+            figure(9)
+            plot(freqval,Ypmean,'-k');
+            title('charactarstics using Peak-based protective alghorithm');
+        end
         reply6=input('do you want to go again? Y/N ans: ','s');
         if isempty(reply6);
             reply6 = 'N';
@@ -257,13 +278,19 @@ end
 %2. added the charctarstics mode to the system
 %B. Bug Fixes
 %1. fixed the starting value proplem in the 2 sample method
-%2. made the system use only the next value in all my methods to avoid
-%errors
+%2. made the system use only the next value in all my methods to avoid errors
+
+
+%version 1.11 change log
+%minor bug fixes
+
+%version 1.2 change log
+% added Peak-Based Predictive calculation 
 
 %feautures yet to be added in future versions
-%1. Peak-Based Predictive calculation
-%2. Mann-Morrison and Prodar 70 (maybe in some future but don't intend to do it now)
+%1. Mann-Morrison and Prodar 70 (maybe in some future but don't intend to do it now)
 %3. Matrix input (high propability to be implemented)
 %4. File input (high propability to implement)
 %4. a modular programming based version (feels kinda unnecessary to say the least)
-%5. a GUI version (for efficient work flow the system must be made modular first )
+%5. a GUI version (for efficient work flow the system must be made modular first fell like its gonna be a drag don't if its ever gonna happen)
+%6. adding proper comments(that's a must but will take a while)
