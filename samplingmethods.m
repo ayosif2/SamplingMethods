@@ -1,4 +1,4 @@
-%Sampling methods V1.2 (still thinking of a proper name)
+%Sampling methods V1.21 (still thinking of a proper name)
 %this application was devolped by Yossef Ahmed Samir Salama for the subject
 %of fault analysis
 %here figure 1 is the main wave, 2,3 the 2 sampling method figure ,4,5 the 3
