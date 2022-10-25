@@ -1,4 +1,4 @@
-%Sampling methods V1.21 (still thinking of a proper name)
+%Sampling methods V1.3 (still thinking of a proper name)
 %this application was devolped by Yossef Ahmed Samir Salama for the subject
 %of fault analysis
 %here figure 1 is the main wave, 2,3 the 2 sampling method figure ,4,5 the 3
@@ -133,15 +133,7 @@ while(1)
         plot(time,k,'-ro');
         title("the main wave");
         if reply5=='2' || reply5=='1'
-            Yc=k;
-            Ys(1)=(Yc(1)*cos(2*freq0*pi*Tsample)-0)/sin(2*freq0*pi*Tsample);
-            for j=2:length(k)
-                Ys(j)=(Yc(j)*cos(2*freq0*pi*Tsample)-Yc(j-1))/sin(2*freq0*pi*Tsample);
-            end
-            for z=1:length(k)
-                Y(z)=sqrt(Ys(z)^2+Yc(z)^2);
-                angle(z)=atand(Ys(z)/Yc(z));
-            end
+            [Y,angle] = TwoSample(k,freq0,Tsample);
             figure(2);
             plot(time,Y,'-bo');
             title('magnitude over time for two sample method')
@@ -150,30 +142,13 @@ while(1)
             title('angle over time for two sample method');       
         end
         if reply5=='P' || reply5=='1'
-            Yp(1)=(1/(2*pi*freq0))*sqrt((k(1)/Tsample)^2+(2*pi*freq0*k(1))^2);
-            for j=2:length(k)
-                Yp(j)=(1/(2*pi*freq0))*sqrt(((k(j)-k(j-1))/Tsample)^2+(2*pi*freq0*k(j))^2);
-            end
+            [Yp] = PeakBased(k,freq0,Tsample);
             figure(8)
             plot(time,Yp,'-ko')
             title('magnitude over time for Peak-Based predictive method')
         end
         if reply5=='3' || reply5=='1'
-            Yc3(1)=(0*cos(2*freq0*pi*Tsample)+0+k(1)*cos(2*freq0*pi*Tsample))/((2*(cos(2*freq0*pi*Tsample))^2)+1);
-            Ys3(1)=(k(1)-0)/(2*sin(2*freq0*pi*Tsample));
-            Yc3(2)=(0*cos(2*freq0*pi*Tsample)+0+k(1)*cos(2*freq0*pi*Tsample))/((2*(cos(2*freq0*pi*Tsample))^2)+1);
-            Ys3(2)=(k(1)-0)/(2*sin(2*freq0*pi*Tsample));
-            for j=3:length(k)
-                Yc3(j)=(k(j-2)*cos(2*freq0*pi*Tsample)+k(j-1)+k(j)*cos(2*freq0*pi*Tsample))/((2*(cos(2*freq0*pi*Tsample))^2)+1);
-            end
-            for j=3:length(k)
-                Ys3(j)=(k(j)-k(j-2))/(2*sin(2*freq0*pi*Tsample));
-            end
-            for z=1:length(k)
-                Y3(z)=sqrt(Ys3(z)^2+Yc3(z)^2);
-                angle3(z)=atand(Ys3(z)/Yc3(z));
-            end
-            mean(Y)
+            [Y3,angle3]=ThreeSample(k,freq0,Tsample);
             figure(4);
             plot(time,Y3,'-bo');
             title('magnitude over time for three sample method')
@@ -210,39 +185,15 @@ while(1)
                 k(i)=amp*sin(2*iI*basefreq*pi*Tsample*(i-len-1)+phaseangle*pi/180);
             end
             if reply9=='2' || reply9=='1'
-                Yc=k;
-                Ys(1)=(Yc(1)*cos(2*freq0*pi*Tsample)-0)/sin(2*freq0*pi*Tsample);
-                for j=2:length(k)
-                    Ys(j)=(Yc(j)*cos(2*freq0*pi*Tsample)-Yc(j-1))/sin(2*freq0*pi*Tsample);
-                end
-                for z=1:length(k)
-                    Y(z)=sqrt(Ys(z)^2+Yc(z)^2);
-                    angle(z)=atand(Ys(z)/Yc(z));
-                end
+                [Y,angle] = TwoSample(k,freq0,Tsample);
                 Ymean2(iI)=mean(Y);
             end
             if reply5=='P' || reply5=='1'
-                Yp(1)=(1/(2*pi*freq0))*sqrt((k(1)/Tsample)^2+(2*pi*freq0*k(1))^2);
-                for j=2:length(k)
-                    Yp(j)=(1/(2*pi*freq0))*sqrt(((k(j)-k(j-1))/Tsample)^2+(2*pi*freq0*k(j))^2);
-                end
+                [Yp] = PeakBased(k,freq0,Tsample);
                 Ypmean=mean(Yp);
             end
             if reply9=='3' || reply9=='1'
-                Yc3(1)=(0*cos(2*freq0*pi*Tsample)+0+k(1)*cos(2*freq0*pi*Tsample))/((2*(cos(2*freq0*pi*Tsample))^2)+1);
-                Ys3(1)=(k(1)-0)/(2*sin(2*freq0*pi*Tsample));
-                Yc3(2)=(0*cos(2*freq0*pi*Tsample)+0+k(1)*cos(2*freq0*pi*Tsample))/((2*(cos(2*freq0*pi*Tsample))^2)+1);
-                Ys3(2)=(k(1)-0)/(2*sin(2*freq0*pi*Tsample));
-                for j=3:length(k)
-                    Yc3(j)=(k(j-2)*cos(2*freq0*pi*Tsample)+k(j-1)+k(j)*cos(2*freq0*pi*Tsample))/((2*(cos(2*freq0*pi*Tsample))^2)+1);
-                end
-                for j=3:length(k)
-                    Ys3(j)=(k(j)-k(j-2))/(2*sin(2*freq0*pi*Tsample));
-                end
-                for z=1:length(k)
-                    Y3(z)=sqrt(Ys3(z)^2+Yc3(z)^2);
-                    angle3(z)=atand(Ys3(z)/Yc3(z));
-                end
+                [Y3,angle3]=ThreeSample(k,freq0,Tsample);
                 Ymean3(iI)=mean(Y3);
             end            
         end
@@ -294,10 +245,12 @@ end
 %version 1.21
 % very minor changes to the text propmpts
 
+%version 1.3
+%transformed the alghorithms into modules
+
 %feautures yet to be added in future versions
 %1. Mann-Morrison and Prodar 70 (maybe in some future but don't intend to do it now)
 %2. Matrix input (high propability to be implemented)
 %3. File input (high propability to implement)
-%4. a modular programming based version (feels kinda unnecessary to say the least)
-%5. a GUI version (for efficient work flow the system must be made modular first fell like its gonna be a drag don't if its ever gonna happen)
-%6. adding proper comments(that's a must but will take a while)
+%4. a GUI version (for efficient work flow the system must be made modular first fell like its gonna be a drag don't if its ever gonna happen)
+%5. adding proper comments(that's a must but will take a while)
