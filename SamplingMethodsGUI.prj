@@ -1,15 +1,15 @@
 <deployment-project plugin="plugin.apptool" plugin-version="1.0">
-  <configuration build-checksum="1056718150" file="F:\MATLAB GIT\SamplingMethods\SamplingMethods\SamplingMethodsGUI.prj" location="F:\MATLAB GIT\SamplingMethods\SamplingMethods" name="SamplingMethodsGUI" target="target.mlapps" target-name="Package App">
+  <configuration build-checksum="2517932872" file="F:\MATLAB GIT\SamplingMethods\SamplingMethods\SamplingMethodsGUI.prj" location="F:\MATLAB GIT\SamplingMethods\SamplingMethods" name="SamplingMethodsGUI" target="target.mlapps" target-name="Package App">
     <param.appname>SamplingMethodsGUI</param.appname>
-    <param.authnamewatermark>Youssif Ahmed Mohamed Samir Salama</param.authnamewatermark>
+    <param.authnamewatermark>youssif Ahmed Mohamed</param.authnamewatermark>
     <param.email>ayosif2@gmail.com</param.email>
     <param.company>Faculty of Engineering Menofiya</param.company>
     <param.icon />
     <param.icons />
     <param.summary>An application that uses alghorithms to calculate the magnitude of waves</param.summary>
     <param.description />
-    <param.screenshot>C:\Users\PC\AppData\Local\Temp\tp0bcbe9f6_454e_4f69_b4bf_17f96a5d95e7.png</param.screenshot>
-    <param.version>1.5</param.version>
+    <param.screenshot>C:\Users\PC\AppData\Local\Temp\tp1fa34548_0c28_49f6_8094_5d7b1ba49a0f.png</param.screenshot>
+    <param.version>1.51</param.version>
     <param.products.name />
     <param.products.id />
     <param.products.version />
@@ -29,11 +29,7 @@
     <fileset.main>
       <file>${PROJECT_ROOT}\GUI.mlapp</file>
     </fileset.main>
-    <fileset.depfun>
-      <file>${PROJECT_ROOT}\App Functions\PeakBased.m</file>
-      <file>${PROJECT_ROOT}\App Functions\ThreeSample.m</file>
-      <file>${PROJECT_ROOT}\App Functions\TwoSample.m</file>
-    </fileset.depfun>
+    <fileset.depfun />
     <fileset.resources />
     <fileset.package />
     <build-deliverables>
