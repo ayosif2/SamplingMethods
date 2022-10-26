@@ -7,5 +7,6 @@ here I have the Two sample and three sample predictive alghortisms and the Peak-
        https://github.com/ayosif2/SamplingMethods/blob/main/SamplingMethodsGUI.mlappinstall  
          
           
-  then double click it with matlap installed or open the app tab in MATLAB and install it using the path installation video    
-  Installation video:
+then double click it with matlap installed or open the app tab in MATLAB and install it using the path installation video    
+Installation video:
+https://youtu.be/9_LmhwKDWhA
