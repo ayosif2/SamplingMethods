@@ -1,4 +1,4 @@
-%Sampling methods V1.4 (still thinking of a proper name)
+%Sampling methods V1.41 (still thinking of a proper name)
 %this application was devolped by Yossef Ahmed Samir Salama for the subject
 %of fault analysis
 %here figure 1 is the main wave, 2,3 the 2 sampling method figure ,4,5 the 3
@@ -251,6 +251,9 @@ end
 %version 1.4
 
 %added a GUI application for sample generation and analysis
+
+%version 1.41
+%minor bug fixes in the threesample function anf the GUI application
 
 %feautures yet to be added in future versions
 %1. Mann-Morrison and Prodar 70 (maybe in some future but don't intend to do it now)
