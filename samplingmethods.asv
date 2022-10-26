@@ -30,8 +30,6 @@ while(1)         %an infinit while loop to loop agaain if the user wishes to con
                 continue                                                        %continue from the beginning
             end                         
             len=length(k);                                                      %len is the length of k before adding the operation so it can be used as a starting point                                     
-            k1=zeros(1,length(1,len+1+samnumber));
-            k=[k,k1];
             for i=len+1:1:(len+1+samnumber)                                     %here I loop from the len+1 the first new element to len+1+the number of saplings at the ende
                 k(i)=amp*sin(2*freq*pi*Tsample*(i-len-1)+phaseangle*pi/180);    %here I put the value of k
             end
@@ -153,14 +151,11 @@ while(1)         %an infinit while loop to loop agaain if the user wishes to con
         basefreq= freq0/1000;                                           %basefreq:the base frequency is the frequency cahnge between each sample in order to draw the charchtarstic
         ReplySamMeth2=input('\nwhich sampling method do you want 2 for 2 sample method ,3 for 3 sample method,\nP for peak based predictive method and 1 for all;) ans: ','s'); %input from so he can choose which model to use
         simtime=input("\nsimulation time in seconds= ");                %simtime: the simulation time
-        samnumber=round(simtime/Tsample);                               %samnumber: the number of samples
+        samnumber=simtime/Tsample;                                      %samnumber: the number of samples
         if isempty(ReplySamMeth2)                                       %failsafe
             ReplySamMeth2 = '1';
         end
-            k=zeros(1,samnumber);                                       %put zeros so the memory allocated size doesn't change each loop (improves performance)
-            Ymean2=zeros(1,10000);                                      %put zeros so the memory allocated size doesn't change each loop (improves performance)
-            Ymean3=zeros(1,10000);                                      %put zeros so the memory allocated size doesn't change each loop (improves performance)
-            Ypmean=zeros(1,10000);                                      %put zeros so the memory allocated size doesn't change each loop (improves performance)
+            k=zereos(1,samnum)
         for iI=1:10000                                                  %looping on each frequency
             for i=1:1:(samnumber)                                     %looping to set all values of k
                 k(i)=amp*sin(2*iI*basefreq*pi*Tsample*(i)+phaseangle*pi/180);%setting all values of k
@@ -179,7 +174,7 @@ while(1)         %an infinit while loop to loop agaain if the user wishes to con
             end            
         end
         freqval=(1:10000)*basefreq;                                     %the values of frequency for plotting
-        if ReplySamMeth2=='2' || ReplySamMeth2=='1'                     %start of plotting
+        if ReplySamMeth2=='3' || ReplySamMeth2=='1'                     %start of plotting
             figure('Name','charactarstics using 2 sample method','NumberTitle','off');
             plot(freqval,Ymean2,'-k');
             title('charactarstics using 2 sample method');
@@ -246,11 +241,6 @@ end
 %2. major bug fixes to the GUI application (generate at the end button callback function only worked in certain conditions due to a bug in the code it was fixed in this version)
 %3. major optmization fixes for the command applications (the input was limitied if the ac fundmental amplitude was zero removed such limitations)
 %4. fixed the DC componnet (it was linear I made exponitial)
-%5. improved the performance by removing redunduncy and minmizing memory
-%allocation process
-%6. improved readability by removing all the warnings and fixing them excep
-%one in the m-file application which must be there as memory must be
-%allocated at least once per wave
 
 %feautures yet to be added in future versions
 %1. Mann-Morrison and Prodar 70 (maybe in some future but don't intend to do it now)
