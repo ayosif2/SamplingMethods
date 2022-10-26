@@ -8,7 +8,7 @@
 %for increased readability in a future version
 while(1)
     clc;clear;
-    l=1;
+    l=1;         % a flag that if is set means to propably start the system
     reply8 = input("do you want to analyse a wave[1] or draw the charchtarstics of a sampling function[2]? Ans: ");
     if reply8 == 1
         while 1
