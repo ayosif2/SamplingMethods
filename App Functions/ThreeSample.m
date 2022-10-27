@@ -1,4 +1,4 @@
-function [Y3,angle3] = ThreeSample(k,freq0,Tsample)
+function [Y3,angle3,Yc3,Ys3] = ThreeSample(k,freq0,Tsample)
 %ThreeSample This function applies the three sample predictive alghorithm
 %to any given input data k, freq0 is the model frequency, while Tsample is
 %the sampling time
