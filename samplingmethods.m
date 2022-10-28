@@ -1,4 +1,4 @@
-%Sampling methods V1.6 (still thinking of a proper name)
+%Sampling methods V1.61 (still thinking of a proper name)
 %this application was devolped by Yossef Ahmed Samir Salama for the subject
 %of fault analysis
 %note the term tailing used in the comments means adding a full wave at the
@@ -53,7 +53,7 @@ while(1)         %an infinit while loop to loop agaain if the user wishes to con
                     continue                                                        %continue from the beginning
                 end                         
                 len=length(k);                                                      %len is the length of k before adding the operation so it can be used as a starting point                                     
-                k1=zeros(1,length(1:len+1+samnumber));
+                k1=zeros(1,length(1:1+samnumber));
                 k=[k,k1];
                 for i=len+1:1:(len+1+samnumber)                                     %here I loop from the len+1 the first new element to len+1+the number of saplings at the ende
                     k(i)=amp*sin(2*freq*pi*Tsample*(i-len-1)+phaseangle*pi/180);    %here I put the value of k
@@ -304,6 +304,9 @@ end
 %1. Matrix input 
 %2. File input 
 %3. output to file
+
+%version 1.6 (the file Mangment update)
+%minor bug fixes
 
 %feautures yet to be added in future versions
 %1. Mann-Morrison and Prodar 70 (maybe in some future but don't intend to do it now)
