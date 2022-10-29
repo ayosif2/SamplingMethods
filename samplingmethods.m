@@ -1,4 +1,4 @@
-%Sampling methods V1.61 (still thinking of a proper name)
+%Sampling methods V1.62 (still thinking of a proper name)
 %this application was devolped by Yossef Ahmed Samir Salama for the subject
 %of fault analysis
 %note the term tailing used in the comments means adding a full wave at the
@@ -305,8 +305,11 @@ end
 %2. File input 
 %3. output to file
 
-%version 1.6 (the file Mangment update)
+%version 1.61 (the file Mangment update)
 %minor bug fixes
+
+%Version 1.62 
+%minor changes
 
 %feautures yet to be added in future versions
 %1. Mann-Morrison and Prodar 70 (maybe in some future but don't intend to do it now)

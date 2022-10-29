@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.apptool" plugin-version="1.0">
-  <configuration build-checksum="2517932872" file="F:\MATLAB GIT\SamplingMethods\SamplingMethods\SamplingMethodsGUI.prj" location="F:\MATLAB GIT\SamplingMethods\SamplingMethods" name="SamplingMethodsGUI" target="target.mlapps" target-name="Package App">
+  <configuration build-checksum="1953438595" file="F:\MATLAB GIT\SamplingMethods\SamplingMethods\SamplingMethodsGUI.prj" location="F:\MATLAB GIT\SamplingMethods\SamplingMethods" name="SamplingMethodsGUI" target="target.mlapps" target-name="Package App">
     <param.appname>SamplingMethodsGUI</param.appname>
     <param.authnamewatermark>youssif Ahmed Mohamed</param.authnamewatermark>
     <param.email>ayosif2@gmail.com</param.email>
@@ -8,8 +8,8 @@
     <param.icons />
     <param.summary>An application that uses alghorithms to calculate the magnitude of waves</param.summary>
     <param.description />
-    <param.screenshot>C:\Users\PC\AppData\Local\Temp\tp1fa34548_0c28_49f6_8094_5d7b1ba49a0f.png</param.screenshot>
-    <param.version>1.51</param.version>
+    <param.screenshot>C:\Users\PC\AppData\Local\Temp\tp8c980933_23a5_4612_8bc3_b68995855c8f.png</param.screenshot>
+    <param.version>1.62</param.version>
     <param.products.name />
     <param.products.id />
     <param.products.version />
@@ -44,8 +44,8 @@
         <toolbox name="gpucoder" />
         <toolbox name="fixedpoint" />
         <toolbox name="matlabhdlcoder" />
-        <toolbox name="polyspacebugfinder" />
         <toolbox name="neuralnetwork" />
+        <toolbox name="polyspacebugfinder" />
       </toolboxes>
       <toolbox>
         <matlabcoder>
@@ -73,14 +73,14 @@
         </matlabhdlcoder>
       </toolbox>
       <toolbox>
-        <polyspacebugfinder>
-          <enabled>true</enabled>
-        </polyspacebugfinder>
-      </toolbox>
-      <toolbox>
         <neuralnetwork>
           <enabled>true</enabled>
         </neuralnetwork>
+      </toolbox>
+      <toolbox>
+        <polyspacebugfinder>
+          <enabled>true</enabled>
+        </polyspacebugfinder>
       </toolbox>
     </matlab>
     <platform>
