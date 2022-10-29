@@ -1,4 +1,4 @@
-%Sampling methods V1.7 (still thinking of a proper name)
+%Sampling methods V1.62 (still thinking of a proper name)
 %this application was devolped by Yossef Ahmed Samir Salama for the subject
 %of fault analysis
 %note the term tailing used in the comments means adding a full wave at the
@@ -143,9 +143,9 @@ while(1)         %an infinit while loop to loop agaain if the user wishes to con
             plot((0:length(Yfmean)-1),Yfmean,'rs'); 
             figure('Name','angle over Frequency for tDFT','NumberTitle','off');
             plot(0:length(thetafmean)-1,thetafmean,'rs'); 
-            indexD = -1:(length(k)-1);
+            indexD = 1:(length(k)-1);
             MD1 = zeros(1,length(k)-1);
-            MD2 = transpose(0:Nw/2);
+            MD2 = T1:Nw/2+1;
             MD3 = [indexD;YDFT];
             MD4 = [MD2,MD3];
             delete Output\dft.xlsx        %here I delete the exsitsting file to avoid interferance
@@ -329,9 +329,6 @@ end
 
 %Version 1.62 
 %minor changes
-
-%Version 1.7
-%added DFT to my alghorithms
 
 %feautures yet to be added in future versions
 %1. Mann-Morrison and Prodar 70 (maybe in some future but don't intend to do it now)
