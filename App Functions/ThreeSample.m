@@ -3,6 +3,7 @@ function [Y3,angle3,Yc3,Ys3] = ThreeSample(k,freq0,Tsample)
 %to any given input data k, freq0 is the model frequency, while Tsample is
 %the sampling time
     Yc3=zeros(1,length(k));         %initiating the size of the matrix to improve performance
+    Ys3=zeros(1,length(k));         %initiating the size of the matrix to improve performance
     Yc3(1)=(0*cos(2*freq0*pi*Tsample)+0+k(1)*cos(2*freq0*pi*Tsample))/((2*(cos(2*freq0*pi*Tsample))^2)+1);  %do the first two stages which are faulty in this alghorism
     Ys3(1)=(k(1)-0)/(2*sin(2*freq0*pi*Tsample));
     Yc3(2)=(0*cos(2*freq0*pi*Tsample)+k(1)+k(2)*cos(2*freq0*pi*Tsample))/((2*(cos(2*freq0*pi*Tsample))^2)+1);

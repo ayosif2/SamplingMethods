@@ -1,10 +1,11 @@
-%Sampling methods V1.7 (still thinking of a proper name)
+%Sampling methods V1.71 (still thinking of a proper name)
 %this application was devolped by Yossef Ahmed Samir Salama for the subject
 %of fault analysis
 %note the term tailing used in the comments means adding a full wave at the
 %end(tail hence the name) of the previous wave
 while(1)         %an infinit while loop to loop agaain if the user wishes to continue
     clc;clear;    % to have a clean start
+    
     l=1;         % a flag that if is set means to propably start the system
     ReplyMode = input('do you want to analyse a wave[1] or draw the charchtarstics of a sampling function[2]? Ans: '); %here I ask the user for a reply of what mode he intends to use wave analysis or alghorithm charctarstics
     if ReplyMode == 1       %if the user put 1 then we sttart the wave analysis mode
@@ -53,9 +54,9 @@ while(1)         %an infinit while loop to loop agaain if the user wishes to con
                     continue                                                        %continue from the beginning
                 end                         
                 len=length(k);                                                      %len is the length of k before adding the operation so it can be used as a starting point                                     
-                k1=zeros(1,length(1:1+samnumber));
+                k1=zeros(1,length(1:samnumber));
                 k=[k,k1];
-                for i=len+1:1:(len+1+samnumber)                                     %here I loop from the len+1 the first new element to len+1+the number of saplings at the ende
+                for i=len+1:1:(len+samnumber)                                     %here I loop from the len+1 the first new element to len+1+the number of saplings at the ende
                     k(i)=amp*sin(2*freq*pi*Tsample*(i-len-1)+phaseangle*pi/180);    %here I put the value of k
                 end
                 l2=1;                                                               %l2: is the number of the harmonice componnents
@@ -79,7 +80,7 @@ while(1)         %an infinit while loop to loop agaain if the user wishes to con
                     end
                     amp2   = input('amplitude of the harmonic wave= ');             %amp2: the amplitude of the harmonic wave
                     phase2 = input('phase shift of the wave in degrees phi= ');     %phase2: the angle of the harmonic wave
-                    for i=len+1:1:(len+1+samnumber)                                 %here I loop over k to add the new component
+                    for i=len+1:1:(len+samnumber)                                   %here I loop over k to add the new component
                         k(i)=k(i)+amp2*sin(2*freq*l2*pi*Tsample*(i-len-1)+phase2*pi/180);
                     end
                     else                                                            %if the user said anytrhing but Y it will jump to the next portion
@@ -95,18 +96,18 @@ while(1)         %an infinit while loop to loop agaain if the user wishes to con
                     ReplyDcType= input('\nis the DC componnent rising(R), decaying(D), or constant(C)? ans: ','s'); %ReplyDcType: here I ask the user if the DC is rising Decaying or Constant
                     if ReplyDcType=='R'                                             %if it is rising
                         risetime= input('\nthe rise time is Tr= ');                 %risetime: the time the wave takes to rise
-                        for i=len+1:1:(len+1+samnumber)                             %then I add the DCcomp to the Wave(k)
+                        for i=len+1:1:(len+samnumber)                             %then I add the DCcomp to the Wave(k)
                             DCcomp1=(DCcomp)-(DCcomp)*exp(-(Tsample/risetime*(i-len-1))*5);              %DCcomp: the component at a given moment of time
                             k(i)=k(i)+DCcomp1;                                      %add the DCcomp to the wave
                         end
                     elseif ReplyDcType=='D'                                         %if the user choose decaying 
                     risetime= input('\nthe fall time is Td= ');
-                        for i=len+1:1:(len+1+samnumber)
+                        for i=len+1:1:(len+samnumber)
                             DCcomp1=(DCcomp)*exp(-(Tsample/risetime*(i-len-1))*5);
                             k(i)=k(i)+DCcomp1;
                         end
                     else                                                            %any other choice will default as Constant
-                        for i=len+1:1:(len+1+samnumber)
+                        for i=len+1:1:(len+samnumber)
                             k(i)=k(i)+DCcomp;
                         end
                     end
@@ -143,9 +144,9 @@ while(1)         %an infinit while loop to loop agaain if the user wishes to con
             plot((0:length(Yfmean)-1),Yfmean,'rs'); 
             figure('Name','angle over Frequency for tDFT','NumberTitle','off');
             plot(0:length(thetafmean)-1,thetafmean,'rs'); 
-            indexD = -1:(length(k)-1);
-            MD1 = zeros(1,length(k)-1);
-            MD2 = transpose(0:Nw/2);
+            indexD = 1:(length(k));
+            MD1 = zeros(1,length(k));
+            MD2 = transpose(-1:(Nw/2));
             MD3 = [indexD;YDFT];
             MD4 = [MD2,MD3];
             delete Output\dft.xlsx        %here I delete the exsitsting file to avoid interferance
@@ -332,6 +333,9 @@ end
 
 %Version 1.7
 %added DFT to my alghorithms
+
+%version 1.71 
+%minor bug fixes
 
 %feautures yet to be added in future versions
 %1. Mann-Morrison and Prodar 70 (maybe in some future but don't intend to do it now)
