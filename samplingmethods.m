@@ -1,4 +1,4 @@
-%Sampling methods V1.71 (still thinking of a proper name)
+%Sampling methods V1.8 (still thinking of a proper name)
 %this application was devolped by Yossef Ahmed Samir Salama for the subject
 %of fault analysis
 %note the term tailing used in the comments means adding a full wave at the
@@ -336,6 +336,10 @@ end
 
 %version 1.71 
 %minor bug fixes
+
+%version 1.8
+%1. added DFT for GUI app
+%2. fixed some issues with DC componnent with DFT
 
 %feautures yet to be added in future versions
 %1. Mann-Morrison and Prodar 70 (maybe in some future but don't intend to do it now)

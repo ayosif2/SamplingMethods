@@ -1,5 +1,6 @@
 function [Y,angle,Yc,Ys] = TwoSample(k,freq0,Tsample)
-%TwoSample This function applies the three sample predictive alghorithm
+%TwoSample This function applies the three sample predictive alghorithm for
+%V1.8
 %to any given input data k, freq0 is the model frequency, while Tsample is
 %the sampling time
 	Yc=k;                   %in this alghorism Yc are always equal to k

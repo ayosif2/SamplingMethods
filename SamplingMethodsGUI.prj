@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.apptool" plugin-version="1.0">
-  <configuration build-checksum="1953438595" file="F:\MATLAB GIT\SamplingMethods\SamplingMethods\SamplingMethodsGUI.prj" location="F:\MATLAB GIT\SamplingMethods\SamplingMethods" name="SamplingMethodsGUI" target="target.mlapps" target-name="Package App">
+  <configuration build-checksum="3915809606" file="F:\MATLAB GIT\SamplingMethods\SamplingMethods\SamplingMethodsGUI.prj" location="F:\MATLAB GIT\SamplingMethods\SamplingMethods" name="SamplingMethodsGUI" target="target.mlapps" target-name="Package App">
     <param.appname>SamplingMethodsGUI</param.appname>
     <param.authnamewatermark>youssif Ahmed Mohamed</param.authnamewatermark>
     <param.email>ayosif2@gmail.com</param.email>
@@ -8,8 +8,8 @@
     <param.icons />
     <param.summary>An application that uses alghorithms to calculate the magnitude of waves</param.summary>
     <param.description />
-    <param.screenshot>C:\Users\PC\AppData\Local\Temp\tp8c980933_23a5_4612_8bc3_b68995855c8f.png</param.screenshot>
-    <param.version>1.62</param.version>
+    <param.screenshot>C:\Users\PC\AppData\Local\Temp\tpc16c0f3e_cc85_4fdb_ade9_b02b86edda74.png</param.screenshot>
+    <param.version>1.8</param.version>
     <param.products.name />
     <param.products.id />
     <param.products.version />

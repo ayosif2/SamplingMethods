@@ -1,5 +1,6 @@
 function [Yp] = PeakBased(k,freq0,Tsample)
-%PeakBased This function applies the three sample predictive alghorithm
+%PeakBased This function applies the three sample predictive alghorithm for
+%V1.8
 %to any given input data k, freq0 is the model frequency, while Tsample is
 %the sampling time
             Yp=zeros(1,length(k)); %initiating the size of the matrix to improve performance
