@@ -1,5 +1,5 @@
 function [YDFT,ThetaDFT,YcDFT,YsDFT] = dft(k,freq0,fsample)
-%dft This function applies the dft alghorithm for V1.9
+%dft This function applies the dft alghorithm for V1.8
 %to any given input data k, freq0 is the model frequency, while fsample is
 %the sampling frequency
     Nw=round(fsample/freq0,0);           %setting the window size
@@ -19,12 +19,11 @@ function [YDFT,ThetaDFT,YcDFT,YsDFT] = dft(k,freq0,fsample)
                 YcDFT(jj+1,j+Nw-1)=mean(k1.*(cos((jj*1/Nw*2*pi)*(0:(Nw-1))))); %here we just plugin the numbers note: tthe mean is the addition over the number of elements
                 YsDFT(jj+1,j+Nw-1)=mean(k1.*(sin((jj*1/Nw*2*pi)*(0:(Nw-1))))); %here we just plugin the numbers note: tthe mean is the addition over the number of elements
                 YDFT(jj+1,j+Nw-1)=sqrt(YcDFT(jj+1,j+Nw-1)^2+YsDFT(jj+1,j+Nw-1)^2); %here I calculate the magnitude
-                ThetaDFT(jj+1,j+Nw-1)=atan2d(YsDFT(jj+1,j+Nw-1),YcDFT(jj+1,j+Nw-1));                            %calculate angle
+                
             else
                 YcDFT(jj+1,j+Nw-1)=2*mean(k1.*(cos((jj*1/Nw*2*pi)*(0:(Nw-1))))); %here we just plugin the numbers note: tthe mean is the addition over the number of elements
                 YsDFT(jj+1,j+Nw-1)=2*mean(k1.*(sin((jj*1/Nw*2*pi)*(0:(Nw-1))))); %here we just plugin the numbers note: tthe mean is the addition over the number of elements
                 YDFT(jj+1,j+Nw-1)=sqrt(YcDFT(jj+1,j+Nw-1)^2+YsDFT(jj+1,j+Nw-1)^2); %here I calculate the magnitude 
-                ThetaDFT(jj+1,j+Nw-1)=atan2d(YsDFT(jj+1,j+Nw-1),YcDFT(jj+1,j+Nw-1));                            %calcualte angle
             end
 
         end

@@ -1,6 +1,6 @@
 function [Y3,angle3,Yc3,Ys3] = ThreeSample(k,freq0,Tsample)
 %ThreeSample This function applies the three sample predictive alghorithm
-%for V1.8
+%for V1.9
 %to any given input data k, freq0 is the model frequency, while Tsample is
 %the sampling time
     Yc3=zeros(1,length(k));         %initiating the size of the matrix to improve performance
@@ -20,7 +20,7 @@ function [Y3,angle3,Yc3,Ys3] = ThreeSample(k,freq0,Tsample)
     %here I get the magnitude and angle
     for z=1:length(k)
         Y3(z)=sqrt(Ys3(z)^2+Yc3(z)^2);
-        angle3(z)=atand(Ys3(z)/Yc3(z));
+        angle3(z)=atan2d(Ys3(z),Yc3(z));
     end
 end
 

@@ -1,6 +1,6 @@
 function [Y,angle,Yc,Ys] = TwoSample(k,freq0,Tsample)
 %TwoSample This function applies the three sample predictive alghorithm for
-%V1.8
+%V1.9
 %to any given input data k, freq0 is the model frequency, while Tsample is
 %the sampling time
 	Yc=k;                   %in this alghorism Yc are always equal to k
@@ -15,7 +15,7 @@ function [Y,angle,Yc,Ys] = TwoSample(k,freq0,Tsample)
     %calculating the magnitude and angle
 	for z=1:length(k)
         Y(z)=sqrt(Ys(z)^2+Yc(z)^2);
-        angle(z)=atand(Ys(z)/Yc(z));
+        angle(z)=atan2d(Ys(z),Yc(z));
 	end
 end
 

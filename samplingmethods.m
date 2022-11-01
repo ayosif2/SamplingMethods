@@ -1,4 +1,4 @@
-%Sampling methods V1.8 (still thinking of a proper name)
+%Sampling methods V1.9 (still thinking of a proper name)
 %this application was devolped by Yossef Ahmed Samir Salama for the subject
 %of fault analysis
 %note the term tailing used in the comments means adding a full wave at the
@@ -134,7 +134,7 @@ while(1)         %an infinit while loop to loop agaain if the user wishes to con
         plot(time,k,'-ro');                     %plotting the main wave
         title('the main wave');                 % plotting the main wave
         if ReplySamMeth=='D' || ReplySamMeth=='1'  
-            [YDFT,ThetaDFT,YcDFT,YsDFT] = dft(k,freq0,fsample);
+            [YDFT,ThetaDFT,YcDFT,YsDFT] = dftr(transpose(k),freq0,fsample);
             Nw=fsample/freq0;
             Yfinal=transpose(YDFT);
             Yfmean=mean(Yfinal);
@@ -340,6 +340,10 @@ end
 %version 1.8
 %1. added DFT for GUI app
 %2. fixed some issues with DC componnent with DFT
+
+%version 1.9
+%1. added DFTr (recursive Discrete fourier transform)
+%2. changed the way the angle is calculatted (has no real impplications)
 
 %feautures yet to be added in future versions
 %1. Mann-Morrison and Prodar 70 (maybe in some future but don't intend to do it now)
