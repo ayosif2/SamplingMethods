@@ -5,7 +5,7 @@ function [YFFT,ThetaFFT,YcFFT,YsFFT] = mfft(k,freq0,fsample)
 %that output rather than being in a cmplx form into an easy to understand
 %angle and magnitude for each frequency and ofcourse rather than having the
 %output not averged I multiply it by an average factor as well so the
-%output is simply the voltage and nothing more
+%output is simply the voltage and nothing more V2.0 sampling methods
 
 %here I initialise the matrices used to improve performance
 Nw=round(fsample/freq0,0);

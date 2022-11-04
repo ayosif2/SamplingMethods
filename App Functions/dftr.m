@@ -1,5 +1,5 @@
 function [YDFT,ThetaDFT,YcDFT,YsDFT] = dftr(k,freq0,fsample)
-%dftr This function applies the dft recursive alghorithm for V1.9
+%dftr This function applies the dft recursive alghorithm for V2.0
 %to any given input data k, freq0 is the model frequency, while fsample is
 %the sampling frequency
     Nw=round(fsample/freq0,0);           %setting the window size

@@ -1,5 +1,5 @@
 function [YDFT,ThetaDFT,YcDFT,YsDFT] = dft(k,freq0,fsample)
-%dft This function applies the dft alghorithm for V1.9
+%dft This function applies the dft alghorithm for V2.0
 %to any given input data k, freq0 is the model frequency, while fsample is
 %the sampling frequency
     Nw=round(fsample/freq0,0);           %setting the window size

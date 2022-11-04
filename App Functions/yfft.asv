@@ -3,7 +3,14 @@ function [y]=yfft(x)
     %created by yosif ahmed by porting a C function from the website called
     %rosetta code the porting was done by hand and I have no idea why or
     %how it works I just rewrote the code from C++ syntax to matlab syntax
-    %so 
+    %so here is the link https://rosettacode.org/wiki/Fast_Fourier_transform
+    %from which I took the code and ported it the code is open source the
+    %site has a matlab section but it justs says that matlab has its own
+    %function so in order to build my own ,I was trying to further
+    %understand, but this code was rather hard to understand and as matlab
+    %doesn't easily support void functions that takes a void I couldn't
+    %think of a way to easily implemnt the code all credit for the code
+    %must go to the site mentioned above version 2.0 sampling 
     N=length(x);
     k=N;
     thetaT=pi/N;

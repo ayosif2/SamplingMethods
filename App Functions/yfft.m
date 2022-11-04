@@ -10,7 +10,7 @@ function [y]=yfft(x)
     %understand, but this code was rather hard to understand and as matlab
     %doesn't easily support void functions that takes a void I couldn't
     %think of a way to easily implemnt the code all credit for the code
-    %must go to the site mentioned above
+    %must go to the site mentioned above version 2.0 sampling methods
     N=length(x);
     k=N;
     thetaT=pi/N;
