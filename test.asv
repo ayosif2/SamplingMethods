@@ -1,14 +1,21 @@
 %just a debugging script
-% load('66V.MAT');
-% k=v66va;
+%load('66V.MAT');
+%k=v66va;
 %k = transpose(readmatrix('k.xlsx'));
-z1=10*sind(360/32*(0:255)+300)+16*sind(360/16*(0:255)+100)+11*sind(3*360/32*(0:255)-70);
-k=transpose(z1);
+ z1=10*sin(2*pi/32*(0:255));
+ k=transpose(z1);
 fs=1600;f0=50;
 [YDFT,ThetaDFT,YcDFT,YsDFT] = dft(k,f0,fs);
 [YDFTr,ThetaDFTr,YcDFTr,YsDFTr] = dftr(transpose(k),f0,fs);
-[YFFT,ThetaFFT,YcFFT,YsFFT]=myfft(transpose(k),f0,fs);
-
+[YFFT,ThetaFFT,YcFFT,YsFFT]=mfft(transpose(k),f0,fs);
+x=1;
+theta=90;
+jj=2;
+Nw=fs/
+for j=1:length(k)
+    ThetaDFT(jj,j)=ThetaDFT(jj,j)-theta;
+    theta=theta
+end
 dt=1/fs;
 figure(1)
 plot(dt*(1:length(k)),YDFT(2,1:length(k)))

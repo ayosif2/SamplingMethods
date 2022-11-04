@@ -29,5 +29,15 @@ function [YDFT,ThetaDFT,YcDFT,YsDFT] = dft(k,freq0,fsample)
 
         end
     end
+    for jj=2:(1+Nw/2)           % here I do some calculation to achieve constant phase with respect to starting point
+        theta=90+360*(jj-1)/(Nw)*(-1);  
+        for j =1:length(k)
+            ThetaDFT(jj,j)=-atan2d(sind(ThetaDFT(jj,j)-theta),cosd((ThetaDFT(jj,j)-theta)));
+            if round(theta,0)==180 || round(theta,0)==-180
+                theta=-theta;
+            end
+            theta=theta+360*(jj-1)/(Nw)*(-1);
+        end
+    end
 end
 

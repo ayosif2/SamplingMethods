@@ -1,4 +1,4 @@
-%Sampling methods V1.9 (still thinking of a proper name)
+%Sampling methods V2.0 (still thinking of a proper name)
 %this application was devolped by Yossef Ahmed Samir Salama for the subject
 %of fault analysis
 %note the term tailing used in the comments means adding a full wave at the
@@ -344,6 +344,11 @@ end
 %version 1.9
 %1. added DFTr (recursive Discrete fourier transform)
 %2. changed the way the angle is calculatted (has no real impplications)
+
+%version 2.0
+%1. added built-in FFT to my alghorithms 
+%2. made all my alghorithms constan phasors
+%3. added my own dft to the alghorithms
 
 %feautures yet to be added in future versions
 %1. Mann-Morrison and Prodar 70 (maybe in some future but don't intend to do it now)

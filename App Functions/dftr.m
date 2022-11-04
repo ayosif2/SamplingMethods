@@ -26,7 +26,7 @@ function [YDFT,ThetaDFT,YcDFT,YsDFT] = dftr(k,freq0,fsample)
                 YcDFT(jj,j)=YcDFT(jj,j-1) + NN*(window_new-window_old)*cos((jj-1)*(j-1)*2*pi/Nw);
                 YsDFT(jj,j)=YsDFT(jj,j-1) + NN*(window_new-window_old)*sin((jj-1)*(j-1)*2*pi/Nw);
                 YDFT(jj,j)=sqrt(YcDFT(jj,j)^2+YsDFT(jj,j)^2); %here I calculate the magnitude 
-                ThetaDFT(jj,j)=atan2d(YsDFT(jj,j),YcDFT(jj,j));                            %calcualte angle
+                ThetaDFT(jj,j)=-atan2d(YsDFT(jj,j),YcDFT(jj,j))+90; %calcualte angle here I add 90 to make with respect with starting point
             end
         end
     end

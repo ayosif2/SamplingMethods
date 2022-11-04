@@ -1,0 +1,50 @@
+function [y]=yfft(x)
+    %yfft is my fft function hence the y from yosif this function was
+    %created by yosif ahmed by porting a C function from the website called
+    %rosetta code the porting was done by hand and I have no idea why or
+    %how it works I just rewrote the code from C++ syntax to matlab syntax
+    %so here is the link https://rosettacode.org/wiki/Fast_Fourier_transform
+    %from which I took the code and ported it the code is open source the
+    %site has a matlab section but it justs says that matlab has its own
+    %function so in order to build my own ,I was trying to further
+    %understand, but this code was rather hard to understand and as matlab
+    %doesn't easily support void functions that takes a void I couldn't
+    %think of a way to easily implemnt the code all credit for the code
+    %must go to the site mentioned above
+    N=length(x);
+    k=N;
+    thetaT=pi/N;
+    phiT = cos(thetaT)-1i*sin(thetaT);
+    while(k>1)
+       n=k;
+       k=k/2;
+       phiT=phiT*phiT;
+       T=1;
+        for q=0:k-1
+          for a=q:n:N-1 
+            b=a+k;
+            
+            t=x(a+1)-x(b+1);
+            x(a+1)=x(a+1)+x(b+1);
+            x(b+1)=t*T;
+          end
+          T=T*phiT;
+        end
+    end
+
+    m=log(N)/log(2);
+    for a=0:N-1
+       b=a;
+       b= bitor((bitand( 0xaaaaaaaa, b )/2),(bitand(b,0x55555555)*2));
+       b= bitor((bitand( 0xcccccccc, b )/4),(bitand(b,0x33333333)*4));
+       b= bitor((bitand( 0xf0f0f0f0, b )/16),(bitand(b,0x0f0f0f0f)*16));
+       b= bitor((bitand( 0xff00ff00, b )/256),(bitand(b,0x00ff00ff)*256));
+       b= (bitor((b*(2^(-16))),(b*2^(16))))/(2^(32-m));
+       if (b>a)
+          t=x(a+1);
+          x(a+1)=x(b+1);
+          x(b+1)=t;
+       end
+    end
+    y=x;
+end
